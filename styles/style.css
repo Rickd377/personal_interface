@@ -1,0 +1,166 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  background-color: #b1b1b1;
+  color: #222;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+}
+
+.box {
+  display: grid;
+  place-items: center;
+  place-items: center;
+  grid-template-columns: repeat(6, 1fr) 20px repeat(5, 1fr);
+  grid-template-rows: 40px 20px repeat(4, 1fr) 20px repeat(2, 1fr) 0.5fr 20px repeat(3, 1fr);
+  background-color: #c5c5c5;
+  border-radius: 15px;
+  box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.2);
+  height: 90vh;
+  aspect-ratio: 1;
+  overflow: hidden;
+  padding: 0 20px 20px 20px;
+}
+.box .white-top-bar {
+  background-color: #dfdfdf;
+  height: 40px;
+  width: calc(100% + 40px);
+  grid-column: span 13;
+}
+
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.theme-wrapper {
+  grid-area: 3/1/7/7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+}
+.theme-wrapper .image-slider {
+  height: 100%;
+  width: 60%;
+  background: linear-gradient(45deg, blue, orange);
+}
+.theme-wrapper .theme-selector {
+  height: 100%;
+  width: 40%;
+  background-color: lightgray;
+}
+
+.weather-calender-wrapper {
+  grid-area: 3/8/11/13;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+  padding-bottom: 20px;
+}
+.weather-calender-wrapper .weather {
+  height: 55%;
+  width: 100%;
+  background-color: black;
+}
+.weather-calender-wrapper .calendar {
+  height: 45%;
+  width: 100%;
+  background-color: lightgray;
+}
+
+.todo-wrapper {
+  grid-area: 8/1/11/7;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 20px;
+}
+.todo-wrapper .pinned-task-one {
+  aspect-ratio: 1;
+  width: 33%;
+  background-color: black;
+}
+.todo-wrapper .pinned-task-two {
+  aspect-ratio: 1;
+  width: 33%;
+  background-color: lightgray;
+}
+.todo-wrapper .to-do-list {
+  aspect-ratio: 1;
+  width: 33%;
+  background-color: black;
+}
+
+.bottom-wrapper {
+  grid-area: 12/1/15/13;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+  display: grid;
+  grid-template-columns: 20% 15% 35% 1fr;
+  gap: 20px;
+}
+.bottom-wrapper .agenda, .bottom-wrapper .volume-sub-wrapper, .bottom-wrapper .notes, .bottom-wrapper .music-player {
+  height: 100%;
+}
+.bottom-wrapper .agenda {
+  background-color: black;
+}
+.bottom-wrapper .volume-sub-wrapper {
+  background-color: lightgray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+}
+.bottom-wrapper .notes {
+  background-color: lightgoldenrodyellow;
+  padding: 10px 15px;
+  position: relative;
+}
+.bottom-wrapper .notes .rings {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+}
+.bottom-wrapper .notes .rings * {
+  background: linear-gradient(90deg, #e7e7e7 47%, lightgray 53%);
+  width: 0.6rem;
+  height: 1.7rem;
+  border-radius: 10px;
+  border-bottom: 2px solid gray;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+.bottom-wrapper .music-player {
+  background-color: lightgray;
+}
+
+.item-box {
+  border-radius: 10px;
+}/*# sourceMappingURL=style.css.map */
