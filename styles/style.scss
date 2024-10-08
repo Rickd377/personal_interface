@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 @import "variables";
+@import url('https://unpkg.com/swiper/swiper-bundle.min.css');
 
 @mixin flex-center($direction, $gap, $justify) {
     display: flex;
@@ -9,12 +10,18 @@
     gap: $gap;
 }
 
+@mixin absolute($top, $left) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate(-50%, -50%);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -24,10 +31,8 @@ body {
     @include flex-center(row, 0, center);
 }
 
-
 .box {
     display: grid;
-    place-items: center;
     place-items: center;
     grid-template-columns: repeat(6, 1fr) $box-padding repeat(5, 1fr);
     grid-template-rows: $top-bar-height $box-padding repeat(4, 1fr) $box-padding repeat(2, 1fr) 0.5fr $box-padding repeat(3, 1fr);
@@ -57,7 +62,49 @@ body {
     .image-slider {
         height: 100%;
         width: 60%;
-        background: linear-gradient(45deg, blue, orange);
+        position: relative;
+        overflow: hidden;
+        .swiper-slide {
+            @include flex-center(row, 0, center);
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: auto;
+                border-radius: $border-radius-items;
+            }
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: #fff; // Change button color
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5); // Semi-transparent background
+            @include flex-center(row, 0, center);
+            &:after {
+                @include absolute(50%, 50%);
+                font-size: 1rem;
+            }
+        }
+
+        .swiper-button-next {
+            right: 10px;
+        }
+
+        .swiper-button-prev {
+            left: 10px;
+        }
+
+        .swiper-pagination {
+            bottom: 10px;
+            .swiper-pagination-bullet {
+                background-color: #fff; // Change bullet color
+                opacity: 1;
+                &.swiper-pagination-bullet-active {
+                    background-color: #007aff; // Change active bullet color
+                }
+            }
+        }
     }
     .theme-selector {
         height: 100%;
@@ -106,7 +153,7 @@ body {
     grid-area: 12 / 1 / 15 / 13;
     @include flex-center(row, 0, space-between);
     display: grid;
-    grid-template-columns: 20% 15% 35% 1fr; // Define specific widths for the first three items and let the last one take the remaining space
+    grid-template-columns: 20% 15% 35% 1fr;
     gap: $box-padding;
 
     .agenda, .volume-sub-wrapper, .notes, .music-player {

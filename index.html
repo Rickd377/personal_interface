@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet">
     <title>Personal Interface</title>
 </head>
 
@@ -14,7 +16,21 @@
         <div class="white-top-bar"></div>
 
         <div class="theme-wrapper container">
-            <div class="image-slider item-box"></div>
+            <div class="image-slider item-box swiper-container">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide"><img src="images/slider-img1.png" alt="Image 1"></div>
+                    <div class="swiper-slide"><img src="images/slider-img2.png" alt="Image 2"></div>
+                    <div class="swiper-slide"><img src="images/slider-img3.png" alt="Image 3"></div>
+                    <div class="swiper-slide"><img src="images/slider-img4.png" alt="Image 4"></div>
+                    <div class="swiper-slide"><img src="images/slider-img5.png" alt="Image 5"></div>
+                    <div class="swiper-slide"><img src="images/slider-img6.png" alt="Image 6"></div>
+                </div>
+                <!-- Add Pagination -->
+                <div class="swiper-pagination"></div>
+                <!-- Add Navigation -->
+                <div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
             <div class="theme-selector item-box"></div>
         </div>
 
@@ -56,7 +72,9 @@
 
     </div>
 
-    <script src="js/calendar.js"></script>
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
+    <script src="js/image-slider.js"></script>
 </body>
 
 </html>

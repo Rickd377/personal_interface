@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap");
+@import url("https://unpkg.com/swiper/swiper-bundle.min.css");
 * {
   margin: 0;
   padding: 0;
@@ -19,7 +20,6 @@ body {
 
 .box {
   display: grid;
-  place-items: center;
   place-items: center;
   grid-template-columns: repeat(6, 1fr) 20px repeat(5, 1fr);
   grid-template-rows: 40px 20px repeat(4, 1fr) 20px repeat(2, 1fr) 0.5fr 20px repeat(3, 1fr);
@@ -54,7 +54,59 @@ body {
 .theme-wrapper .image-slider {
   height: 100%;
   width: 60%;
-  background: linear-gradient(45deg, blue, orange);
+  position: relative;
+  overflow: hidden;
+}
+.theme-wrapper .image-slider .swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+}
+.theme-wrapper .image-slider .swiper-slide img {
+  -o-object-fit: cover;
+     object-fit: cover;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.theme-wrapper .image-slider .swiper-button-next,
+.theme-wrapper .image-slider .swiper-button-prev {
+  color: #fff;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+}
+.theme-wrapper .image-slider .swiper-button-next:after,
+.theme-wrapper .image-slider .swiper-button-prev:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1rem;
+}
+.theme-wrapper .image-slider .swiper-button-next {
+  right: 10px;
+}
+.theme-wrapper .image-slider .swiper-button-prev {
+  left: 10px;
+}
+.theme-wrapper .image-slider .swiper-pagination {
+  bottom: 10px;
+}
+.theme-wrapper .image-slider .swiper-pagination .swiper-pagination-bullet {
+  background-color: #fff;
+  opacity: 1;
+}
+.theme-wrapper .image-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  background-color: #007aff;
 }
 .theme-wrapper .theme-selector {
   height: 100%;
@@ -133,7 +185,7 @@ body {
 }
 .bottom-wrapper .notes {
   background-color: lightgoldenrodyellow;
-  padding: 10px 15px;
+  padding: 15px;
   position: relative;
 }
 .bottom-wrapper .notes .rings {
