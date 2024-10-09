@@ -25,7 +25,7 @@ body {
   grid-template-rows: 40px 20px repeat(4, 1fr) 20px repeat(2, 1fr) 0.5fr 20px repeat(3, 1fr);
   background-color: #c5c5c5;
   border-radius: 15px;
-  box-shadow: 5px 15px 20px rgba(0, 0, 0, 0.2);
+  box-shadow: 10px 5px 15px 0 rgba(0, 0, 0, 0.2);
   height: 90vh;
   aspect-ratio: 1;
   overflow: hidden;
@@ -65,8 +65,7 @@ body {
   gap: 0;
 }
 .theme-wrapper .image-slider .swiper-slide img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: auto;
   border-radius: 10px;
@@ -75,8 +74,9 @@ body {
 .theme-wrapper .image-slider .swiper-button-prev {
   color: #fff;
   width: 25px;
-  height: 25px;
-  border-radius: 50%;
+  height: 35px;
+  border-radius: 5px;
+  font-size: 1.2rem;
   background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
@@ -86,11 +86,11 @@ body {
 }
 .theme-wrapper .image-slider .swiper-button-next:after,
 .theme-wrapper .image-slider .swiper-button-prev:after {
+  content: "";
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 1rem;
 }
 .theme-wrapper .image-slider .swiper-button-next {
   right: 10px;
@@ -102,8 +102,10 @@ body {
   bottom: 10px;
 }
 .theme-wrapper .image-slider .swiper-pagination .swiper-pagination-bullet {
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.8);
   opacity: 1;
+  width: 6px;
+  height: 6px;
 }
 .theme-wrapper .image-slider .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active {
   background-color: #007aff;
@@ -207,7 +209,7 @@ body {
   height: 1.7rem;
   border-radius: 10px;
   border-bottom: 2px solid gray;
-  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.4);
 }
 .bottom-wrapper .music-player {
   background-color: lightgray;
@@ -215,4 +217,6 @@ body {
 
 .item-box {
   border-radius: 10px;
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
