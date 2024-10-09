@@ -1,0 +1,28 @@
+@mixin flex-center($direction, $gap, $justify) {
+    display: flex;
+    justify-content: $justify;
+    align-items: center;
+    flex-direction: $direction;
+    gap: $gap;
+}
+
+@mixin absolute($top, $left) {
+    position: absolute;
+    top: $top;
+    left: $left;
+    transform: translate(-50%, -50%);
+}
+
+$box-shadows: (
+    "10": rgba(0, 0, 0, 0.1),
+    "20": rgba(0, 0, 0, 0.2),
+    "40": rgba(0, 0, 0, 0.4),
+    "50": rgba(0, 0, 0, 0.5),
+    "60": rgba(0, 0, 0, 0.6),
+    "80": rgba(0, 0, 0, 0.8)
+);
+
+@mixin box-shadow($level, $x: 0px, $y: 0px, $blur: 10px, $spread: 0px) {
+    $color: map-get($box-shadows, $level);
+    box-shadow: $x $y $blur $spread $color;
+}

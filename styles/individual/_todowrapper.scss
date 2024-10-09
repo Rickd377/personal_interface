@@ -1,0 +1,19 @@
+.todo-wrapper {
+    grid-area: 8 / 1 / 11 / 7;
+    @include flex-center(row, $box-padding, space-between);
+    .pinned-task-one {
+        aspect-ratio: 1;
+        width: 33%;
+        background-color: black; //placeholder
+    }
+    .pinned-task-two {
+        aspect-ratio: 1;
+        width: 33%;
+        background-color: lightgray; //placeholder
+    }
+    .to-do-list {
+        aspect-ratio: 1;
+        width: 33%;
+        background-color: black; //placeholder
+    }
+}

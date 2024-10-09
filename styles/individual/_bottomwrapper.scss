@@ -1,0 +1,47 @@
+.bottom-wrapper {
+    grid-area: 12 / 1 / 15 / 13;
+    @include flex-center(row, 0, space-between);
+    display: grid;
+    grid-template-columns: 20% 15% 35% 1fr;
+    gap: $box-padding;
+
+    .agenda, .volume-sub-wrapper, .notes, .music-player {
+        height: 100%;
+    }
+
+    .agenda {
+        background-color: black; //placeholder
+    }
+
+    .volume-sub-wrapper {
+        background-color: lightgray; //placeholder
+        @include flex-center(column, $box-padding, space-between);
+    }
+
+    .notes {
+        background-color: lightgoldenrodyellow; //placeholder
+        padding: $sub-box-padding;
+        position: relative;
+        .rings {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 80%;
+            @include flex-center(row, 0, space-between);
+            * {
+                background: linear-gradient(90deg, $lightergray_color 47%, $lightgray_color 53%);
+                width: 0.6rem;
+                height: 1.7rem;
+                border-radius: 10px;
+                border-bottom: 2px solid $gray;
+                @include box-shadow("40", 2px, 1px, 5px, 0);
+            }
+        }
+    }
+
+    .music-player {
+        background-color: lightgray; //placeholder
+    }
+}

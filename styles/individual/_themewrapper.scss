@@ -1,0 +1,59 @@
+.theme-wrapper {
+    grid-area: 3 / 1 / 7 / 7; // row-start / column-start / row-end / column-end
+    @include flex-center(row, $box-padding, space-between);
+    .image-slider {
+        height: 100%;
+        width: 60%;
+        position: relative;
+        overflow: hidden;
+        .swiper-slide {
+            @include flex-center(row, 0, center);
+            img {
+                object-fit: cover;
+                width: 100%;
+                height: auto;
+                border-radius: $border-radius-items;
+            }
+        }
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: map-get($white-transparent, "80");
+            width: 25px;
+            height: 35px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            background-color: map-get($black-transparent, "50");
+            @include flex-center(row, 0, center);
+            &:after {
+                content: '';
+                @include absolute(50%, 50%);
+            }
+        }
+
+        .swiper-button-next {
+            right: 10px;
+        }
+
+        .swiper-button-prev {
+            left: 10px;
+        }
+
+        .swiper-pagination {
+            bottom: 10px;
+            .swiper-pagination-bullet {
+                background-color: map-get($white-transparent, "70");
+                opacity: 1;
+                width: 6px;
+                height: 6px;
+                &.swiper-pagination-bullet-active {
+                    background-color: map-get($black-transparent, "60");
+                }
+            }
+        }
+    }
+    .theme-selector {
+        height: 100%;
+        width: 40%;
+        background-color: lightgray; //placeholder
+    }
+}

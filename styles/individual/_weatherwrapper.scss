@@ -1,0 +1,15 @@
+.weather-calender-wrapper {
+    grid-area: 3 / 8 / 11 / 13;
+    @include flex-center(column, $box-padding, space-between);
+    padding-bottom: $box-padding;
+    .weather {
+        height: 55%;
+        width: 100%;
+        background-color: black; //placeholder
+    }
+    .calendar {
+        height: 45%;
+        width: 100%;
+        background-color: lightgray; //placeholder
+    }
+}
