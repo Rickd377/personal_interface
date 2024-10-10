@@ -103,10 +103,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: rgba(0, 0, 0, 0.1);
   z-index: 1;
 }
 .weather-calender-wrapper .weather .current-weather {
+  color: #fff;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -121,11 +122,11 @@
   text-align: center;
 }
 .weather-calender-wrapper .weather .current-weather .weather-info h2 {
-  font-size: 2.5rem;
+  font-size: 2.3rem;
   margin: 0;
 }
 .weather-calender-wrapper .weather .current-weather .weather-info p {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin: 0;
 }
 .weather-calender-wrapper .weather .weather-slider {
@@ -143,10 +144,11 @@
 .weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-date {
   font-size: 1rem;
   margin-bottom: 5px;
+  color: #fff;
 }
 .weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-icon img {
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
 }
 .weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-info {
   text-align: center;
@@ -154,10 +156,12 @@
 .weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-info h3 {
   font-size: 1.5rem;
   margin: 0;
+  color: #fff;
 }
 .weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-info p {
   font-size: 0.875rem;
   margin: 0;
+  color: #fff;
 }
 .weather-calender-wrapper .weather .weather-slider #weather-button-next,
 .weather-calender-wrapper .weather .weather-slider #weather-button-prev {
@@ -167,6 +171,7 @@
   top: 80%;
   transform: translateY(-50%);
   position: absolute;
+  color: #fff;
 }
 .weather-calender-wrapper .weather .weather-slider #weather-button-next i,
 .weather-calender-wrapper .weather .weather-slider #weather-button-prev i {
@@ -177,9 +182,73 @@
   content: "";
 }
 .weather-calender-wrapper .calendar {
-  height: 45%;
   width: 100%;
-  background-color: lightgray;
+  height: 45%;
+  background-color: #c5c5c5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+  box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2);
+}
+.weather-calender-wrapper .calendar .calendar-header {
+  text-align: center;
+  margin-bottom: 10px;
+}
+.weather-calender-wrapper .calendar .calendar-header h2 {
+  margin: 0;
+  margin-bottom: -15px;
+  font-size: 1.3rem;
+  color: #222;
+}
+.weather-calender-wrapper .calendar .calendar-grid {
+  display: grid;
+  place-content: center;
+  place-items: center;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+  padding: 10px;
+  width: 100%;
+}
+.weather-calender-wrapper .calendar .calendar-grid .calendar-day-header {
+  text-align: center;
+  font-weight: 600;
+  color: #222;
+  font-size: 0.8rem;
+  margin-bottom: 3px;
+}
+.weather-calender-wrapper .calendar .calendar-grid .calendar-day {
+  text-align: center;
+  width: 100%;
+  height: 1.5rem;
+  background-color: #fff;
+  border-radius: 3px;
+  color: #222;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+  font-size: 0.8rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 0;
+  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
+}
+.weather-calender-wrapper .calendar .calendar-grid .calendar-day.weekend {
+  color: #ff4574;
+}
+.weather-calender-wrapper .calendar .calendar-grid .calendar-day.today {
+  color: #ff4574;
+  border: 1px solid #ff4574;
+}
+.weather-calender-wrapper .calendar .calendar-grid .calendar-day.empty {
+  background-color: transparent;
+  box-shadow: none;
 }
 
 .todo-wrapper {
@@ -266,6 +335,10 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  -webkit-user-drag: none;
 }
 
 body {
