@@ -22,7 +22,8 @@
   gap: 0;
 }
 .theme-wrapper .image-slider .swiper-slide img {
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   width: 100%;
   height: auto;
   border-radius: 10px;
@@ -85,7 +86,95 @@
 .weather-calender-wrapper .weather {
   height: 55%;
   width: 100%;
-  background-color: black;
+  background-color: #c5c5c5;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  position: relative;
+}
+.weather-calender-wrapper .weather::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.5);
+  z-index: 1;
+}
+.weather-calender-wrapper .weather .current-weather {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  z-index: 3;
+}
+.weather-calender-wrapper .weather .current-weather .weather-icon img {
+  width: 70px;
+  height: 70px;
+}
+.weather-calender-wrapper .weather .current-weather .weather-info {
+  text-align: center;
+}
+.weather-calender-wrapper .weather .current-weather .weather-info h2 {
+  font-size: 2.5rem;
+  margin: 0;
+}
+.weather-calender-wrapper .weather .current-weather .weather-info p {
+  font-size: 1.2rem;
+  margin: 0;
+}
+.weather-calender-wrapper .weather .weather-slider {
+  width: 90%;
+}
+.weather-calender-wrapper .weather .weather-slider .swiper-wrapper {
+  display: flex;
+  justify-content: space-around;
+}
+.weather-calender-wrapper .weather .weather-slider .swiper-slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-date {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+.weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-icon img {
+  width: 40px;
+  height: 40px;
+}
+.weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-info {
+  text-align: center;
+}
+.weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-info h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
+.weather-calender-wrapper .weather .weather-slider .swiper-slide .forecast-info p {
+  font-size: 0.875rem;
+  margin: 0;
+}
+.weather-calender-wrapper .weather .weather-slider #weather-button-next,
+.weather-calender-wrapper .weather .weather-slider #weather-button-prev {
+  color: #222;
+  width: 25px;
+  height: 25px;
+  top: 80%;
+  transform: translateY(-50%);
+  position: absolute;
+}
+.weather-calender-wrapper .weather .weather-slider #weather-button-next i,
+.weather-calender-wrapper .weather .weather-slider #weather-button-prev i {
+  font-size: 1.5rem;
+}
+.weather-calender-wrapper .weather .weather-slider #weather-button-next::after,
+.weather-calender-wrapper .weather .weather-slider #weather-button-prev::after {
+  content: "";
 }
 .weather-calender-wrapper .calendar {
   height: 45%;
@@ -218,6 +307,4 @@ body {
 .item-box {
   border-radius: 10px;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2);
-}
-
-/*# sourceMappingURL=style.css.map */
+}/*# sourceMappingURL=style.css.map */
