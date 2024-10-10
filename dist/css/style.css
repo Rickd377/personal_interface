@@ -71,7 +71,47 @@
 .theme-wrapper .theme-selector {
   height: 100%;
   width: 40%;
-  background-color: lightgray;
+  background-color: #808080;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.theme-wrapper .theme-selector .color-picker-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  width: 100%;
+}
+.theme-wrapper .theme-selector .color-picker-wrapper label {
+  margin-bottom: 10px;
+  font-size: 1rem;
+  color: #333;
+}
+.theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker input[type=color] {
+  display: none;
+}
+.theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker .color-display {
+  width: 50px;
+  height: 30px;
+  border-radius: 5px;
+  border: 2px solid #d2d2d2;
+  cursor: pointer;
+  transition: border-color 0.3s, transform 0.3s;
+  position: relative;
+}
+.theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker .color-display:hover {
+  border-color: #aaa;
+  transform: scale(1.05);
+}
+.theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker .color-display:focus {
+  outline: none;
+  border-color: #666;
 }
 
 .weather-calender-wrapper {

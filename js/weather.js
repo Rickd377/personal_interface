@@ -1,6 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
     const apiKey = '4f91d01bf628ee6b33156de0a0248545'; // Replace with your OpenWeatherMap API key
-    const city = 'Amsterdam'; // Replace with your desired city
+    let city = prompt("Enter your city", "New York"); // Prompt for city input
+    if (!city) {
+        city = 'New York'; // Default to New York if no input is provided
+    }
+
+    const checkCityExists = async (city) => {
+        try {
+            const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
+            if (response.ok) {
+                return true;
+            } else {
+                alert("City not found");
+                return false;
+            }
+        } catch (error) {
+            console.error('Error checking city:', error);
+            alert("City not found");
+            return false;
+        }
+    };
+
+    (async () => {
+        const cityExists = await checkCityExists(city);
+        if (!cityExists) {
+            city = prompt("Enter your city", "New York");
+            if (!city) {
+                city = 'New York'; // Default to New York if no input is provided
+            }
+        }
+    })();
+
     const weatherContainer = document.querySelector('.weather');
     const weatherSliderContainer = document.querySelector('.weather-slider .swiper-wrapper');
 
@@ -72,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const initializeSwiper = () => {
         new Swiper('.weather-slider', {
             slidesPerView: 3,
-            spaceBetween: 14,
+            spaceBetween: 10,
             navigation: {
                 nextEl: '#weather-button-next',
                 prevEl: '#weather-button-prev',

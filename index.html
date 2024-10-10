@@ -31,7 +31,21 @@
                 <div class="swiper-button-next"><i class="fal fa-angle-right"></i></div>
                 <div class="swiper-button-prev"><i class="fal fa-angle-left"></i></div>
             </div>
-            <div class="theme-selector item-box"></div>
+            <div class="theme-selector item-box">
+                <div class="color-picker-wrapper">
+                    <label for="body-bg-color">Body Background Color:</label>
+                    <div class="custom-color-picker">
+                        <input type="color" id="body-bg-color" name="body-bg-color" value="#ffffff">
+                        <span class="color-display" id="body-color-display"></span>
+                    </div>
+                    
+                    <label for="box-bg-color">Box Background Color:</label>
+                    <div class="custom-color-picker">
+                        <input type="color" id="box-bg-color" name="box-bg-color" value="#f0f0f0">
+                        <span class="color-display" id="box-color-display"></span>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="weather-calender-wrapper container">
@@ -85,6 +99,7 @@
     <script src="js/image-slider.js"></script>
     <script src="js/weather.js"></script>
     <script src="js/calendar.js"></script>
+    <script src="js/color-picker.js"></script>
 </body>
 
 </html>

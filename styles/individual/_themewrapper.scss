@@ -51,9 +51,57 @@
             }
         }
     }
+
     .theme-selector {
         height: 100%;
         width: 40%;
-        background-color: lightgray; //placeholder
+        background-color: $gray_color; // Updated background color
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+        .color-picker-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 10px;
+            width: 100%;
+    
+            label {
+                margin-bottom: 10px;
+                font-size: 1rem;
+                color: #333;
+            }
+    
+            .custom-color-picker {
+                display: flex;
+                align-items: center;
+                width: 100%;
+    
+                input[type="color"] {
+                    display: none;
+                }
+    
+                .color-display {
+                    width: 50px;
+                    height: 30px;
+                    border-radius: 5px;
+                    border: 2px solid $lightgray_color;
+                    cursor: pointer;
+                    transition: border-color 0.3s, transform 0.3s;
+                    position: relative;
+    
+                    &:hover {
+                        border-color: #aaa;
+                        transform: scale(1.05);
+                    }
+    
+                    &:focus {
+                        outline: none;
+                        border-color: #666;
+                    }
+                }
+            }
+        }
     }
 }
