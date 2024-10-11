@@ -65,22 +65,25 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updateAgenda() {
         agendaBox.innerHTML = '';
+        const today = new Date();
         const sortedDates = Object.keys(events).sort((a, b) => new Date(a) - new Date(b));
         sortedDates.forEach(date => {
-            const dateEvents = events[date];
-            dateEvents.forEach((event, index) => {
-                const eventElement = document.createElement('div');
-                eventElement.classList.add('agenda-item');
-                const formattedDate = getFormattedDate(date);
-                eventElement.innerHTML = `
-                    <span>${formattedDate}: ${event.text}</span>
-                    <button class="delete-event" data-date="${date}" data-index="${index}">
-                        <i class="fas fa-trash-alt"></i>
-                    </button>
-                `;
-                eventElement.style.borderTop = `4px solid ${event.color}`;
-                agendaBox.appendChild(eventElement);
-            });
+            if (new Date(date) >= today) { // Only display events that are today or in the future
+                const dateEvents = events[date];
+                dateEvents.forEach((event, index) => {
+                    const eventElement = document.createElement('div');
+                    eventElement.classList.add('agenda-item');
+                    const formattedDate = getFormattedDate(date);
+                    eventElement.innerHTML = `
+                        <span>${formattedDate}: ${event.text}</span>
+                        <button class="delete-event" data-date="${date}" data-index="${index}">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    `;
+                    eventElement.style.borderTop = `4px solid ${event.color}`;
+                    agendaBox.appendChild(eventElement);
+                });
+            }
         });
     }
 
