@@ -33,15 +33,15 @@
             </div>
             <div class="theme-selector item-box">
                 <div class="color-picker-wrapper">
-                    <label for="body-bg-color">Body Background Color:</label>
+                    <label for="body-bg-color">Background color:</label>
                     <div class="custom-color-picker">
-                        <input type="color" id="body-bg-color" name="body-bg-color" value="#ffffff">
+                        <input type="color" id="body-bg-color" name="body-bg-color" value="#b1b1b1">
                         <span class="color-display" id="body-color-display"></span>
                     </div>
                     
-                    <label for="box-bg-color">Box Background Color:</label>
+                    <label for="box-bg-color">Box color:</label>
                     <div class="custom-color-picker">
-                        <input type="color" id="box-bg-color" name="box-bg-color" value="#f0f0f0">
+                        <input type="color" id="box-bg-color" name="box-bg-color" value="#c5c5c5">
                         <span class="color-display" id="box-color-display"></span>
                     </div>
                 </div>
@@ -76,17 +76,12 @@
             </div>
 
             <div class="notes item-box">
-                <div class="rings">
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
+                <div class="notes-input">
+                    <h2>Notes:</h2>
+                    <textarea id="notes-textarea" placeholder="Add a note..."></textarea>
+                    <button id="save-notes-button"><i class="fas fa-save"></i></button>
                 </div>
-                <h2>Notes:</h2>
+                <ul id="notes-list"></ul>
             </div>
 
             <div class="music-player item-box"></div>
@@ -100,6 +95,7 @@
     <script src="js/weather.js"></script>
     <script src="js/calendar.js"></script>
     <script src="js/color-picker.js"></script>
+    <script src="js/notes.js"></script>
 </body>
 
 </html>

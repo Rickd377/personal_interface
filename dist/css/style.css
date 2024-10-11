@@ -71,21 +71,21 @@
 .theme-wrapper .theme-selector {
   height: 100%;
   width: 40%;
-  background-color: #808080;
+  background-color: #d2d2d2;
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .theme-wrapper .theme-selector .color-picker-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  place-items: center;
   gap: 10px;
   width: 100%;
+  height: 75%;
 }
 .theme-wrapper .theme-selector .color-picker-wrapper label {
-  margin-bottom: 10px;
-  font-size: 1rem;
+  font-size: 0.9rem;
   color: #333;
 }
 .theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker {
@@ -97,17 +97,13 @@
   display: none;
 }
 .theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker .color-display {
-  width: 50px;
+  width: 100%;
   height: 30px;
   border-radius: 5px;
-  border: 2px solid #d2d2d2;
+  border: 2px solid #fff;
   cursor: pointer;
   transition: border-color 0.3s, transform 0.3s;
   position: relative;
-}
-.theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker .color-display:hover {
-  border-color: #aaa;
-  transform: scale(1.05);
 }
 .theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker .color-display:focus {
   outline: none;
@@ -341,30 +337,97 @@
   gap: 20px;
 }
 .bottom-wrapper .notes {
-  background-color: lightgoldenrodyellow;
-  padding: 15px;
+  background-color: #f9ec8e;
+  padding: 15px 10px;
+  color: #222;
   position: relative;
+  overflow: auto;
+  /* Custom scrollbar styles */
 }
-.bottom-wrapper .notes .rings {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
+.bottom-wrapper .notes::-webkit-scrollbar {
+  width: 8px; /* Adjust the width of the scrollbar */
+}
+.bottom-wrapper .notes::-webkit-scrollbar-thumb {
+  background: #888; /* Color of the scrollbar thumb */
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+.bottom-wrapper .notes::-webkit-scrollbar-thumb:hover {
+  background: #555; /* Color of the scrollbar thumb on hover */
+}
+.bottom-wrapper .notes h2 {
+  font-size: 1.3rem;
+  color: #333;
+}
+.bottom-wrapper .notes .notes-input {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  gap: 1rem;
+  margin-bottom: 10px;
+}
+.bottom-wrapper .notes .notes-input textarea {
+  width: auto;
+  padding: 5px;
+  height: 30px;
+  border-radius: 5px;
+  resize: none;
+  font-size: 0.9rem;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  outline: none;
+}
+.bottom-wrapper .notes .notes-input button {
+  padding: 5px;
+  height: 30px;
+  width: 30px;
+  background-color: #dda601;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+}
+.bottom-wrapper .notes .notes-input button i {
+  font-size: 0.9rem;
+}
+.bottom-wrapper .notes .notes-input button:hover {
+  background-color: #aa8001;
+}
+.bottom-wrapper .notes ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column-reverse;
+}
+.bottom-wrapper .notes ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-direction: row;
-  gap: 0;
+  padding: 10px 0;
+  border-bottom: 1px solid #dda601; /* Border bottom with dark yellow color */
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+  background-color: transparent; /* No background color */
+  white-space: normal; /* Allow text to wrap */
+  word-break: break-word; /* Break long words */
+  -webkit-hyphens: auto;
+          hyphens: auto; /* Enable hyphenation */
 }
-.bottom-wrapper .notes .rings * {
-  background: linear-gradient(90deg, #e7e7e7 47%, #d2d2d2 53%);
-  width: 0.6rem;
-  height: 1.7rem;
-  border-radius: 10px;
-  border-bottom: 2px solid #808080;
-  box-shadow: 2px 1px 5px 0 rgba(0, 0, 0, 0.4);
+.bottom-wrapper .notes ul li button {
+  background: none;
+  border: none;
+  color: #dda601; /* Dark yellow color for delete icon */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: color 0.2s;
+}
+.bottom-wrapper .notes ul li button i {
+  font-size: 1rem;
+}
+.bottom-wrapper .notes ul li button:hover {
+  color: #aa8001;
 }
 .bottom-wrapper .music-player {
   background-color: lightgray;

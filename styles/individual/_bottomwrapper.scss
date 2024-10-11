@@ -19,24 +19,104 @@
     }
 
     .notes {
-        background-color: lightgoldenrodyellow; //placeholder
-        padding: $sub-box-padding;
+        background-color: $yellow-note_color; // placeholder
+        padding: 15px 10px;
+        color: $font_color;
         position: relative;
-        .rings {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80%;
-            @include flex-center(row, 0, space-between);
-            * {
-                background: linear-gradient(90deg, $lightergray_color 47%, $lightgray_color 53%);
-                width: 0.6rem;
-                height: 1.7rem;
-                border-radius: 10px;
-                border-bottom: 2px solid $gray_color;
-                @include box-shadow("40", 2px, 1px, 5px, 0);
+        overflow: auto;
+
+        /* Custom scrollbar styles */
+        &::-webkit-scrollbar {
+            width: 8px; /* Adjust the width of the scrollbar */
+        }
+
+        &::-webkit-scrollbar-thumb {
+            background: #888; /* Color of the scrollbar thumb */
+            border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+        }
+
+        &::-webkit-scrollbar-thumb:hover {
+            background: #555; /* Color of the scrollbar thumb on hover */
+        }
+    
+        h2 {
+            font-size: 1.3rem;
+            color: #333;
+        }
+    
+        .notes-input {
+            @include flex-center(row, 1rem, center);
+            margin-bottom: 10px;
+    
+            textarea {
+                width: auto;
+                padding: 5px;
+                height: 30px;
+                border-radius: 5px;
+                resize: none;
+                font-size: 0.9rem;
+                overflow: hidden;
+                border: 1px solid $lightergray_color;
+                outline: none;
+            }
+    
+            button {
+                padding: 5px;
+                height: 30px;
+                width: 30px;
+                background-color: $amber_color;
+                color: white;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                font-size: 1rem;
+                transition: background-color 0.3s;
+    
+                i {
+                    font-size: 0.9rem;
+                }
+    
+                &:hover {
+                    background-color: darken($amber_color, 10%);
+                }
+            }
+        }
+    
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-direction: column-reverse;
+    
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px 0;
+                border-bottom: 1px solid $amber_color; /* Border bottom with dark yellow color */
+                margin-bottom: 5px;
+                font-size: 0.95rem;
+                background-color: transparent; /* No background color */
+                white-space: normal; /* Allow text to wrap */
+                word-break: break-word; /* Break long words */
+                hyphens: auto; /* Enable hyphenation */
+    
+                button {
+                    background: none;
+                    border: none;
+                    color: $amber_color; /* Dark yellow color for delete icon */
+                    cursor: pointer;
+                    font-size: 1rem;
+                    transition: color 0.2s;
+    
+                    i {
+                        font-size: 1rem;
+                    }
+    
+                    &:hover {
+                        color: darken($amber_color, 10%);
+                    }
+                }
             }
         }
     }
