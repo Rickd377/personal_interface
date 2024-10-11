@@ -22,8 +22,7 @@
   gap: 0;
 }
 .theme-wrapper .image-slider .swiper-slide img {
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: auto;
   border-radius: 10px;
@@ -337,22 +336,11 @@
   gap: 20px;
 }
 .bottom-wrapper .notes {
-  background-color: #f9ec8e;
-  padding: 15px 10px;
+  background-color: #f6e385;
+  padding: 15px;
   color: #222;
   position: relative;
   overflow: auto;
-  /* Custom scrollbar styles */
-}
-.bottom-wrapper .notes::-webkit-scrollbar {
-  width: 8px; /* Adjust the width of the scrollbar */
-}
-.bottom-wrapper .notes::-webkit-scrollbar-thumb {
-  background: #888; /* Color of the scrollbar thumb */
-  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
-}
-.bottom-wrapper .notes::-webkit-scrollbar-thumb:hover {
-  background: #555; /* Color of the scrollbar thumb on hover */
 }
 .bottom-wrapper .notes h2 {
   font-size: 1.3rem;
@@ -374,9 +362,9 @@
   font-size: 0.9rem;
   overflow: hidden;
   border: none;
-  border-bottom: 1px solid #dda601;
+  border-radius: 3px;
   outline: none;
-  background: transparent;
+  background: rgb(249.5038167939, 237.9007633588, 180.4961832061);
 }
 .bottom-wrapper .notes .notes-input button {
   padding: 5px;
@@ -394,7 +382,7 @@
   font-size: 0.9rem;
 }
 .bottom-wrapper .notes .notes-input button:hover {
-  background-color: #aa8001;
+  background-color: rgb(170.2297297297, 127.8648648649, 0.7702702703);
 }
 .bottom-wrapper .notes ul {
   list-style-type: none;
@@ -413,8 +401,7 @@
   background-color: transparent; /* No background color */
   white-space: normal; /* Allow text to wrap */
   word-break: break-word; /* Break long words */
-  -webkit-hyphens: auto;
-          hyphens: auto; /* Enable hyphenation */
+  hyphens: auto; /* Enable hyphenation */
 }
 .bottom-wrapper .notes ul li button {
   background: none;
@@ -428,7 +415,17 @@
   font-size: 1rem;
 }
 .bottom-wrapper .notes ul li button:hover {
-  color: #aa8001;
+  color: rgb(170.2297297297, 127.8648648649, 0.7702702703);
+}
+.bottom-wrapper .notes::-webkit-scrollbar {
+  width: 8px; /* Adjust the width of the scrollbar */
+}
+.bottom-wrapper .notes::-webkit-scrollbar-thumb {
+  background: rgb(251.2557251908, 243.3511450382, 204.2442748092);
+  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
+}
+.bottom-wrapper .notes::-webkit-scrollbar-thumb:hover {
+  background: rgb(249.5038167939, 237.9007633588, 180.4961832061);
 }
 .bottom-wrapper .music-player {
   background-color: lightgray;
@@ -439,9 +436,7 @@
   padding: 0;
   box-sizing: border-box;
   font-family: "Roboto", sans-serif;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  user-select: none;
   -webkit-user-drag: none;
 }
 
@@ -484,4 +479,6 @@ body {
 .item-box {
   border-radius: 10px;
   box-shadow: 5px 5px 10px 0 rgba(0, 0, 0, 0.2);
-}/*# sourceMappingURL=style.css.map */
+}
+
+/*# sourceMappingURL=style.css.map */
