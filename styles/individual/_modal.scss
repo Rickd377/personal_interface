@@ -100,7 +100,7 @@
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 3px;
-    background-color: #f9f9f9;
+    background-color: map-get($black-transparent, "20");
 
     .delete-event {
         background: none;
@@ -113,5 +113,9 @@
 
     .delete-event:hover {
         text-decoration: underline;
+    }
+
+    i {
+        color: #2c76ff;
     }
 }

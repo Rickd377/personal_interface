@@ -9,19 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let selectedDate = null;
     let events = getEventsFromCookies();
 
-    // Fetch events from API
-    async function fetchEvents() {
-        try {
-            const response = await fetch('https://api.example.com/events'); // Replace with your API endpoint
-            const apiEvents = await response.json();
-            events = { ...events, ...apiEvents };
-            updateCalendar();
-            updateAgenda();
-        } catch (error) {
-            console.error('Error fetching events:', error);
-        }
-    }
-
     calendarContainer.addEventListener('click', function(event) {
         if (event.target.classList.contains('calendar-day')) {
             selectedDate = event.target.dataset.date;
@@ -61,12 +48,19 @@ document.addEventListener('DOMContentLoaded', function() {
         days.forEach(day => {
             const date = day.dataset.date;
             if (events[date] && events[date].length > 0) {
-                const eventColor = events[date][0].color; // Use the color of the first event for the dot
-                day.innerHTML = `${day.textContent} <span class="event-indicator" style="background-color: ${eventColor};"></span>`;
+                const colors = events[date].map(event => event.color);
+                const gradient = createGradient(colors);
+                day.innerHTML = `${day.textContent} <span class="event-indicator" style="background: ${gradient};"></span>`;
             } else {
                 day.innerHTML = day.textContent;
             }
         });
+    }
+
+    function createGradient(colors) {
+        const step = 100 / colors.length;
+        const gradientStops = colors.map((color, index) => `${color} ${index * step}%, ${color} ${(index + 1) * step}%`);
+        return `linear-gradient(90deg, ${gradientStops.join(', ')})`;
     }
 
     function updateAgenda() {
@@ -127,7 +121,6 @@ document.addEventListener('DOMContentLoaded', function() {
         return {};
     }
 
-    fetchEvents();
     updateCalendar();
     updateAgenda();
 });
