@@ -370,12 +370,13 @@
   width: auto;
   padding: 5px;
   height: 30px;
-  border-radius: 5px;
   resize: none;
   font-size: 0.9rem;
   overflow: hidden;
-  border: 1px solid #e7e7e7;
+  border: none;
+  border-bottom: 1px solid #dda601;
   outline: none;
+  background: transparent;
 }
 .bottom-wrapper .notes .notes-input button {
   padding: 5px;

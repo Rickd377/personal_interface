@@ -52,12 +52,13 @@
                 width: auto;
                 padding: 5px;
                 height: 30px;
-                border-radius: 5px;
                 resize: none;
                 font-size: 0.9rem;
                 overflow: hidden;
-                border: 1px solid $lightergray_color;
+                border: none;
+                border-bottom: 1px solid $amber_color;
                 outline: none;
+                background: transparent;
             }
     
             button {
