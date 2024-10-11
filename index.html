@@ -78,12 +78,10 @@
         </div>
 
         <div class="bottom-wrapper container">
-            <div class="agenda item-box"></div>
-
-            <div class="volume-sub-wrapper sub-wrapper item-box">
-                <div class="volume-one"></div>
-                <div class="volume-two"></div>
-            </div>
+          <div class="agenda item-box">
+            <h3>Upcomming events:</h3>
+            <div class="agenda-list"></div>
+        </div>
 
             <div class="notes item-box">
                 <div class="notes-input">
@@ -99,6 +97,27 @@
 
     </div>
 
+    <div id="event-modal" class="modal">
+      <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Add Event/Task</h2>
+          <form id="event-form">
+              <label for="event-text">Event/Task:</label>
+              <input type="text" id="event-text" required>
+              <label for="event-color">Color:</label>
+              <select id="event-color" required class="dropdown">
+                  <option value="#ff0000">Red</option>
+                  <option value="#00ff00">Green</option>
+                  <option value="#0000ff">Blue</option>
+                  <option value="#ffff00">Yellow</option>
+                  <option value="#ff00ff">Pink</option>
+                  <option value="#00ffff">Cyan</option>
+              </select>
+              <button type="submit">Add</button>
+          </form>
+      </div>
+  </div>
+
     <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
     <script src="js/image-slider.js"></script>
@@ -106,6 +125,8 @@
     <script src="js/calendar.js"></script>
     <script src="js/color-picker.js"></script>
     <script src="js/notes.js"></script>
+    <script src="js/event-modal.js"></script>
+
 </body>
 
 </html>

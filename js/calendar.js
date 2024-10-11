@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const isWeekend = (firstDay + day - 1) % 7 === 0 || (firstDay + day - 1) % 7 === 6;
             const isToday = day === currentDate;
             const isPastDay = day < currentDate;
-            calendarHTML += `<div class="calendar-day${isWeekend ? ' weekend' : ''}${isToday ? ' today' : ''}${isPastDay ? ' past-day' : ''}">${day}</div>`;
+            calendarHTML += `<div class="calendar-day${isWeekend ? ' weekend' : ''}${isToday ? ' today' : ''}${isPastDay ? ' past-day' : ''}" data-date="${currentYear}-${String(currentMonth + 1).padStart(2, '0')}-${String(day).padStart(2, '0')}">${day}</div>`;
         }
 
         calendarHTML += '</div>';
