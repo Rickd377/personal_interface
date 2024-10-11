@@ -12,6 +12,9 @@ body {
     color: $font_color;
     height: 100vh;
     @include flex-center(row, 0, center);
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 .box {
@@ -19,7 +22,7 @@ body {
     place-items: center;
     grid-template-columns: repeat(6, 1fr) $box-padding repeat(5, 1fr);
     grid-template-rows: $top-bar-height $box-padding repeat(4, 1fr) $box-padding repeat(2, 1fr) 0.5fr $box-padding repeat(3, 1fr);
-    background-color: $box_color;
+    background-color: map-get($white-transparent, "60");
     border-radius: $border-radius;
     @include box-shadow("20", 10px, 5px, 15px, 0);
     height: 90vh;

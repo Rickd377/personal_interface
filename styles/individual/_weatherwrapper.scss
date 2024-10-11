@@ -179,17 +179,22 @@
                 @include box-shadow("20", 2px, 2px, 5px, 0);
 
                 &.weekend {
-                    color: $red-weekend_color;
+                    background-color: lighten($red-weekend_color, 33%);
                 }
 
                 &.today {
                     color: $red-weekend_color;
                     border: 1px solid $red-weekend_color;
+                    font-weight: 600;
                 }
 
                 &.empty {
                     background-color: transparent;
                     box-shadow: none;
+                }
+                
+                &.past-day {
+                    filter: brightness(0.95);
                 }
             }
         }

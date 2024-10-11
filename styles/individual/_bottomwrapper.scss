@@ -107,18 +107,15 @@
                 }
             }
         }
-        
+
         &::-webkit-scrollbar {
             width: 8px; /* Adjust the width of the scrollbar */
         }
     
         &::-webkit-scrollbar-thumb {
-            background: lighten($yellow-note_color, 15%);
-            border-radius: 10px; /* Rounded corners for the scrollbar thumb */
-        }
-    
-        &::-webkit-scrollbar-thumb:hover {
-            background: lighten($yellow-note_color, 10%);
+            background: transparent;
+            border-top-right-radius: 50px;
+            border-bottom-right-radius: 50px;
         }
     }
     

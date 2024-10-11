@@ -70,14 +70,13 @@
 .theme-wrapper .theme-selector {
   height: 100%;
   width: 40%;
-  background-color: #d2d2d2;
+  background-color: #e7e7e7;
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 .theme-wrapper .theme-selector .color-picker-wrapper {
   display: grid;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: repeat(3, auto);
   place-items: center;
   gap: 10px;
   width: 100%;
@@ -85,7 +84,7 @@
 }
 .theme-wrapper .theme-selector .color-picker-wrapper label {
   font-size: 0.9rem;
-  color: #333;
+  color: #222;
 }
 .theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker {
   display: flex;
@@ -104,9 +103,14 @@
   transition: border-color 0.3s, transform 0.3s;
   position: relative;
 }
-.theme-wrapper .theme-selector .color-picker-wrapper .custom-color-picker .color-display:focus {
+.theme-wrapper .theme-selector .color-picker-wrapper select {
+  width: 100%;
+  padding: 5px;
+  border-radius: 5px;
+  border: none;
   outline: none;
-  border-color: #666;
+  font-size: 0.9rem;
+  cursor: pointer;
 }
 
 .weather-calender-wrapper {
@@ -275,15 +279,19 @@
   box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 .weather-calender-wrapper .calendar .calendar-grid .calendar-day.weekend {
-  color: #ff4574;
+  background-color: rgb(255, 237.3, 241.7725806452);
 }
 .weather-calender-wrapper .calendar .calendar-grid .calendar-day.today {
   color: #ff4574;
   border: 1px solid #ff4574;
+  font-weight: 600;
 }
 .weather-calender-wrapper .calendar .calendar-grid .calendar-day.empty {
   background-color: transparent;
   box-shadow: none;
+}
+.weather-calender-wrapper .calendar .calendar-grid .calendar-day.past-day {
+  filter: brightness(0.95);
 }
 
 .todo-wrapper {
@@ -421,11 +429,9 @@
   width: 8px; /* Adjust the width of the scrollbar */
 }
 .bottom-wrapper .notes::-webkit-scrollbar-thumb {
-  background: rgb(251.2557251908, 243.3511450382, 204.2442748092);
-  border-radius: 10px; /* Rounded corners for the scrollbar thumb */
-}
-.bottom-wrapper .notes::-webkit-scrollbar-thumb:hover {
-  background: rgb(249.5038167939, 237.9007633588, 180.4961832061);
+  background: transparent;
+  border-top-right-radius: 50px;
+  border-bottom-right-radius: 50px;
 }
 .bottom-wrapper .music-player {
   background-color: lightgray;
@@ -449,6 +455,9 @@ body {
   align-items: center;
   flex-direction: row;
   gap: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .box {
@@ -456,7 +465,7 @@ body {
   place-items: center;
   grid-template-columns: repeat(6, 1fr) 20px repeat(5, 1fr);
   grid-template-rows: 40px 20px repeat(4, 1fr) 20px repeat(2, 1fr) 0.5fr 20px repeat(3, 1fr);
-  background-color: #c5c5c5;
+  background-color: rgba(255, 255, 255, 0.6);
   border-radius: 15px;
   box-shadow: 10px 5px 15px 0 rgba(0, 0, 0, 0.2);
   height: 90vh;
@@ -465,7 +474,7 @@ body {
   padding: 0 20px 20px 20px;
 }
 .box .white-top-bar {
-  background-color: #dfdfdf;
+  background-color: #f7f7f7;
   height: 40px;
   width: calc(100% + 40px);
   grid-column: span 13;

@@ -55,14 +55,13 @@
     .theme-selector {
         height: 100%;
         width: 40%;
-        background-color: $lightgray_color; // Updated background color
+        background-color: $lightergray_color;
         padding: 20px;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     
         .color-picker-wrapper {
             display: grid;
-            grid-template-rows: 1fr 1fr 1fr 1fr;
+            grid-template-rows: repeat(3, auto);
             place-items: center;
             gap: 10px;
             width: 100%;
@@ -70,7 +69,7 @@
     
             label {
                 font-size: 0.9rem;
-                color: #333;
+                color: $font_color;
             }
     
             .custom-color-picker {
@@ -90,12 +89,17 @@
                     cursor: pointer;
                     transition: border-color 0.3s, transform 0.3s;
                     position: relative;
-    
-                    &:focus {
-                        outline: none;
-                        border-color: #666;
-                    }
                 }
+            }
+    
+            select {
+                width: 100%;
+                padding: 5px;
+                border-radius: 5px;
+                border: none;
+                outline: none;
+                font-size: 0.9rem;
+                cursor: pointer;
             }
         }
     }

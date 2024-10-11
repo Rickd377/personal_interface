@@ -30,7 +30,8 @@ document.addEventListener('DOMContentLoaded', function() {
         for (let day = 1; day <= daysInMonth; day++) {
             const isWeekend = (firstDay + day - 1) % 7 === 0 || (firstDay + day - 1) % 7 === 6;
             const isToday = day === currentDate;
-            calendarHTML += `<div class="calendar-day${isWeekend ? ' weekend' : ''}${isToday ? ' today' : ''}">${day}</div>`;
+            const isPastDay = day < currentDate;
+            calendarHTML += `<div class="calendar-day${isWeekend ? ' weekend' : ''}${isToday ? ' today' : ''}${isPastDay ? ' past-day' : ''}">${day}</div>`;
         }
 
         calendarHTML += '</div>';
