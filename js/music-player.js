@@ -81,6 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const logoutFromSpotify = () => {
         accessToken = '';
+        sessionStorage.removeItem('spotifyAccessToken');
         spotifyAuthButton.style.display = 'block';
         logoutText.classList.add('hidden');
         musicTitle.textContent = 'No media playing';
@@ -90,19 +91,28 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Clear the access token from the URL
         window.location.hash = '';
-
-        // Redirect to Spotify logout
-        window.location.href = 'https://www.spotify.com/logout/';
     };
 
     spotifyAuthButton.addEventListener('click', authenticateWithSpotify);
     logoutText.addEventListener('click', logoutFromSpotify);
 
     accessToken = getAccessTokenFromUrl();
+    if (accessToken) {
+        sessionStorage.setItem('spotifyAccessToken', accessToken);
+        window.location.hash = '';
+    } else {
+        accessToken = sessionStorage.getItem('spotifyAccessToken');
+    }
+
     console.log('Access token:', accessToken);
     if (accessToken) {
         spotifyAuthButton.style.display = 'none';
         logoutText.classList.remove('hidden');
         fetchCurrentlyPlaying();
     }
+
+    window.addEventListener('beforeunload', () => {
+        sessionStorage.removeItem('spotifyAccessToken');
+        window.location.hash = '';
+    });
 });
