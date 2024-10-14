@@ -1,19 +1,141 @@
 .todo-wrapper {
     grid-area: 8 / 1 / 11 / 7;
     @include flex-center(row, $box-padding, space-between);
-    .pinned-task-one {
+
+    .item-box {
         aspect-ratio: 1;
-        width: 33%;
-        background-color: black; //placeholder
+        height: 130px;
+        max-width: 130px;
+        background-color: darken($white_color, 15%);
+        border-radius: $border-radius-items;
+        box-shadow: 0 4px 8px rgba($black_color, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: $box-padding;
+        text-align: center;
+        position: relative;
     }
+
+    .widget-content {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+
+        .joke-text {
+            font-size: 0.9rem;
+        }
+    }
+
+    p {
+        font-size: 1.5rem;
+        color: darken($gray_color, 10%);
+    }
+
     .pinned-task-two {
-        aspect-ratio: 1;
-        width: 33%;
-        background-color: lightgray; //placeholder
+        padding: 0 !important;
     }
+
     .to-do-list {
-        aspect-ratio: 1;
-        width: 33%;
-        background-color: black; //placeholder
+        padding: 0 10px;
+    }
+
+    #drawing-board {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .drawing-controls {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .flip-box {
+        perspective: 1000px;
+        cursor: pointer;
+    }
+
+    .flip-box-inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.3s;
+        transform-style: preserve-3d;
+    }
+
+    .flip-box-inner.show-answer {
+        transform: rotateY(180deg);
+    }
+
+    .flip-box-front, .flip-box-back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        backface-visibility: hidden;
+        border-radius: $border-radius-items;
+    }
+
+    .flip-box-back {
+        transform: rotateY(180deg);
+    }
+
+    .reveal-container {
+        left: 0;
+    }
+
+    .reveal-icon {
+        position: absolute;
+        top: 10px;
+        left: 0px;
+        font-size: 1.2rem;
+        color: $gray_color;
+        cursor: pointer;
+    }
+
+    .reveal-text {
+        position: absolute;
+        top: 10px;
+        left: 1.2rem;
+        font-size: 0.8rem;
+        background-color: $white_color;
+        color: $dark-gray_color;
+        border-radius: 2px;
+        margin-left: 5px;
+        padding: 2px;
+    }
+
+    button {
+        padding: 5px;
+        background-color: map-get($black-transparent, "50");
+        color: $white_color; // Use white color variable
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 0.8rem;
+        transition: background-color 0.3s ease;
+        width: calc(1rem + 10px);
+        height: calc(1rem + 10px);
+        @include flex-center(row, 0, center);
+
+        &:hover {
+            background-color: map-get($black-transparent, "70");
+        }
+
+        &:active {
+            background-color: map-get($black-transparent, "90");
+        }
+
+        i {
+            pointer-events: none;
+        }
     }
 }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="dist/css/style.css">
     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-vibrant/3.1.6/vibrant.min.js"></script>
     <link rel="stylesheet" href="https://site-assets.fontawesome.com/releases/v6.6.0/css/all.css">
     <title>Personal Interface</title>
 </head>
@@ -16,7 +17,8 @@
     <div class="box">
         <div class="white-top-bar">
             <span id="city-name">New York</span>
-            <button id="change-city-button">Change City</button>
+            <button id="change-city-button" class="top-button">Change City</button>
+            <button id="logout-text" class="top-button hidden">Logout from Spotify</button>
         </div>
 
         <div class="theme-wrapper container">
@@ -81,9 +83,37 @@
         </div>
 
         <div class="todo-wrapper container">
-            <div class="pinned-task-one item-box"></div>
-            <div class="pinned-task-two item-box"></div>
-            <div class="to-do-list item-box"></div>
+            <div class="pinned-task-one item-box">
+                <div class="widget-content">
+                    <p id="clock">Loading...</p>
+                </div>
+            </div>
+            <div class="pinned-task-two item-box">
+                <div class="widget-content">
+                    <canvas id="drawing-board"></canvas>
+                    <div class="drawing-controls">
+                        <button id="clear-drawing"><i class="fas fa-trash"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="to-do-list item-box flip-box">
+                <div class="flip-box-inner">
+                    <div class="flip-box-front">
+                        <div class="widget-content">
+                            <p id="joke-question" class="joke-text">Loading...</p>
+                            <div class="reveal-container">
+                                <i class="fas fa-info-circle reveal-icon"></i>
+                                <p class="reveal-text" style="display: none;">Click to reveal answer, double click to get a new joke</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flip-box-back">
+                        <div class="widget-content">
+                            <p id="joke-answer" class="joke-text">Loading...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
         <div class="bottom-wrapper container">
@@ -101,7 +131,14 @@
                 <ul id="notes-list"></ul>
             </div>
 
-            <div class="music-player item-box"></div>
+            <div class="music-player item-box">
+                <img id="music-cover" src="" alt="" class="hidden">
+                <div id="music-info">
+                    <p id="music-title">No media playing</p>
+                    <p id="music-artist"></p>
+                </div>
+                <button id="spotify-auth-button">Connect to Spotify</button>
+            </div>
         </div>
 
     </div>
@@ -112,7 +149,7 @@
           <h2>Add Event/Task</h2>
           <form id="event-form">
               <label for="event-text">Event/Task:</label>
-              <input type="text" id="event-text" required>
+              <input type="text" id="event-text" required autocomplete="off">
               <label for="event-color">Color:</label>
               <select id="event-color" required class="dropdown">
                   <option value="#ff5b5b">Red</option>
@@ -134,6 +171,8 @@
     <script src="js/color-picker.js"></script>
     <script src="js/notes.js"></script>
     <script src="js/event-modal.js"></script>
+    <script src="js/music-player.js"></script>
+    <script src="js/widgets.js"></script>
 
 </body>
 

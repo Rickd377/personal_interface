@@ -1,80 +1,60 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const apiKey = '4f91d01bf628ee6b33156de0a0248545'; // Replace with your OpenWeatherMap API key
+    const apiKey = '4f91d01bf628ee6b33156de0a0248545';
     const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-
     const getCityFromCookies = () => {
         const cookies = document.cookie.split(';');
         for (let cookie of cookies) {
             const [name, value] = cookie.split('=');
-            if (name.trim() === 'city') {
-                return decodeURIComponent(value);
-            }
+            if (name.trim() === 'city') return decodeURIComponent(value);
         }
         return null;
     };
-
-    const saveCityToCookies = (city) => {
+    const saveCityToCookies = city => {
         document.cookie = `city=${encodeURIComponent(city)};path=/;max-age=${60 * 60 * 24 * 365}`;
     };
-
-    const checkCityExists = async (city) => {
+    const checkCityExists = async city => {
         try {
             const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`);
-            if (response.ok) {
-                return true;
-            } else {
-                alert("City not found");
-                return false;
-            }
+            if (response.ok) return true;
+            alert("City not found");
+            return false;
         } catch (error) {
             console.error('Error checking city:', error);
             alert("City not found");
             return false;
         }
     };
-
     const promptForCity = async () => {
-        await delay(1000); // Delay for 1 second
+        await delay(1000);
         let city = prompt("Enter your city", "New York");
-        if (!city) {
-            city = 'New York'; // Default to New York if no input is provided
-        }
+        if (!city) city = 'New York';
         return city;
     };
-
-    const updateCityInTopBar = (city) => {
+    const updateCityInTopBar = city => {
         const cityElement = document.getElementById('city-name');
-        if (cityElement) {
-            cityElement.textContent = city;
-        }
+        if (cityElement) cityElement.textContent = city;
     };
-
     const initializeWeather = async () => {
         let city = getCityFromCookies();
         if (!city) {
             city = await promptForCity();
             const cityExists = await checkCityExists(city);
-            if (cityExists) {
-                saveCityToCookies(city);
-            } else {
+            if (cityExists) saveCityToCookies(city);
+            else {
                 city = await promptForCity();
-                if (!city) {
-                    city = 'New York'; // Default to New York if no input is provided
-                }
+                if (!city) city = 'New York';
                 saveCityToCookies(city);
             }
         }
         updateCityInTopBar(city);
         fetchWeather(city);
     };
-
-    const fetchWeather = async (city) => {
+    const fetchWeather = async city => {
         try {
             const currentWeatherResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`);
             const currentWeatherData = await currentWeatherResponse.json();
             displayCurrentWeather(currentWeatherData);
             setWeatherBackground(currentWeatherData.weather[0].main, currentWeatherData.main.temp);
-
             const forecastResponse = await fetch(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`);
             const forecastData = await forecastResponse.json();
             displayForecast(forecastData);
@@ -83,8 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.error('Error fetching weather data:', error);
         }
     };
-
-    const displayCurrentWeather = (data) => {
+    const displayCurrentWeather = data => {
         const { temp } = data.main;
         const { description, icon } = data.weather[0];
         const weatherContainer = document.querySelector('.weather');
@@ -98,10 +77,9 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         `;
     };
-
-    const displayForecast = (data) => {
+    const displayForecast = data => {
         const weatherSliderContainer = document.querySelector('.weather-slider .swiper-wrapper');
-        weatherSliderContainer.innerHTML = ''; // Clear previous forecast
+        weatherSliderContainer.innerHTML = '';
         const dailyForecasts = data.list.filter(forecast => forecast.dt_txt.includes('12:00:00'));
         dailyForecasts.forEach(forecast => {
             const date = new Date(forecast.dt_txt).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
@@ -122,7 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
             weatherSliderContainer.appendChild(forecastElement);
         });
     };
-
     const setWeatherBackground = (weatherCondition, temperature) => {
         const weatherContainer = document.querySelector('.weather');
         const weatherImages = {
@@ -136,7 +113,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const backgroundImage = temperature > 20 ? weatherImages.hot : weatherImages[weatherCondition.toLowerCase()] || weatherImages.default;
         weatherContainer.style.backgroundImage = `url(${backgroundImage})`;
     };
-
     const initializeSwiper = () => {
         new Swiper('.weather-slider', {
             slidesPerView: 3,
@@ -147,8 +123,6 @@ document.addEventListener('DOMContentLoaded', () => {
             },
         });
     };
-
-    // Function to change the city
     const changeCity = async () => {
         const newCity = await promptForCity();
         const cityExists = await checkCityExists(newCity);
@@ -158,12 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
             fetchWeather(newCity);
         }
     };
-
-    // Example usage: Add a button to change the city in the top bar
     const changeCityButton = document.getElementById('change-city-button');
-    if (changeCityButton) {
-        changeCityButton.addEventListener('click', changeCity);
-    }
-
+    if (changeCityButton) changeCityButton.addEventListener('click', changeCity);
     initializeWeather();
 });

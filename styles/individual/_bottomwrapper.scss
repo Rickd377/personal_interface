@@ -30,11 +30,6 @@
         }
     }
 
-    .volume-sub-wrapper {
-        background-color: lightgray; //placeholder
-        @include flex-center(column, $box-padding, space-between);
-    }
-
     .notes {
         background-color: $yellow-note_color; // placeholder
         padding: 15px;
@@ -69,7 +64,7 @@
                 height: 30px;
                 width: 30px;
                 background-color: $amber_color;
-                color: white;
+                color: $white_color;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
@@ -97,18 +92,18 @@
                 justify-content: space-between;
                 align-items: center;
                 padding: 10px 0;
-                border-bottom: 1px solid $amber_color; /* Border bottom with dark yellow color */
+                border-bottom: 1px solid $amber_color;
                 margin-bottom: 5px;
                 font-size: 0.95rem;
-                background-color: transparent; /* No background color */
-                white-space: normal; /* Allow text to wrap */
-                word-break: break-word; /* Break long words */
-                hyphens: auto; /* Enable hyphenation */
+                background-color: transparent;
+                white-space: normal;
+                word-break: break-word;
+                hyphens: auto;
 
                 button {
                     background: none;
                     border: none;
-                    color: $amber_color; /* Dark yellow color for delete icon */
+                    color: $amber_color;
                     cursor: pointer;
                     font-size: 1rem;
                     transition: color 0.2s;
@@ -125,7 +120,7 @@
         }
 
         &::-webkit-scrollbar {
-            width: 0px; /* Adjust the width of the scrollbar */
+            width: 0px;
         }
 
         &::-webkit-scrollbar-thumb {
@@ -136,6 +131,61 @@
     }
 
     .music-player {
-        background-color: lightgray; //placeholder
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 0 10px;
+        background-color: $gray_color;
+        border-radius: 10px;
+        text-align: center;
+    
+        img {
+            width: 70%;
+            aspect-ratio: 1;
+            border-radius: 5px;
+            @include box-shadow("10", 2px, 3px, 5px, 0);
+            margin-bottom: 10px;
+        }
+    
+        #music-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+    
+            p {
+                margin: 3px 0;
+                font-size: 1.2rem;
+            }
+    
+            #music-title {
+                font-weight: bold;
+                font-size: clamp(0.875rem, 0.9vw, 1rem);
+            }
+    
+            #music-artist {
+                font-size: 0.7rem;
+            }
+        }
+    
+        #spotify-auth-button {
+            padding: 10px 20px;
+            background-color: $green_color;
+            color: $white_color;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background-color 0.3s ease;
+    
+            &:hover {
+                background-color: darken($green_color, 7%);
+            }
+    
+            &:active {
+                background-color: darken($green_color, 10%);
+            }
+        }
     }
 }
