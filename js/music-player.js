@@ -46,11 +46,16 @@ document.addEventListener('DOMContentLoaded', function() {
     };
 
     const fetchCurrentlyPlaying = () => {
+        console.log('Fetching currently playing track...');
         fetch('https://api.spotify.com/v1/me/player/currently-playing', {
-            headers: { 'Authorization': ` ${accessToken}` }
+            headers: { 'Authorization': `Bearer ${accessToken}` }
         })
-        .then(response => response.json())
+        .then(response => {
+            console.log('Response status:', response.status);
+            return response.json();
+        })
         .then(data => {
+            console.log('Data received:', data);
             if (data && data.item) {
                 updateMusicInfo(data.item);
             } else {
@@ -82,12 +87,19 @@ document.addEventListener('DOMContentLoaded', function() {
         musicArtist.textContent = '';
         musicCover.classList.add('hidden');
         musicPlayer.style.backgroundColor = '';
+
+        // Clear the access token from the URL
+        window.location.hash = '';
+
+        // Redirect to Spotify logout
+        window.location.href = 'https://www.spotify.com/logout/';
     };
 
     spotifyAuthButton.addEventListener('click', authenticateWithSpotify);
     logoutText.addEventListener('click', logoutFromSpotify);
 
     accessToken = getAccessTokenFromUrl();
+    console.log('Access token:', accessToken);
     if (accessToken) {
         spotifyAuthButton.style.display = 'none';
         logoutText.classList.remove('hidden');
