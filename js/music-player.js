@@ -51,11 +51,13 @@ document.addEventListener('DOMContentLoaded', function() {
             headers: { 'Authorization': `Bearer ${accessToken}` }
         })
         .then(response => {
-            console.log('Response status:', response.status);
+            if (response.status === 204 || response.status === 205) {
+                updateMusicInfo(null);
+                return null;
+            }
             return response.json();
         })
         .then(data => {
-            console.log('Data received:', data);
             if (data && data.item) {
                 updateMusicInfo(data.item);
             } else {
@@ -96,10 +98,11 @@ document.addEventListener('DOMContentLoaded', function() {
     spotifyAuthButton.addEventListener('click', authenticateWithSpotify);
     logoutText.addEventListener('click', logoutFromSpotify);
 
+    // Retrieve access token from URL or session storage
     accessToken = getAccessTokenFromUrl();
     if (accessToken) {
         sessionStorage.setItem('spotifyAccessToken', accessToken);
-        window.location.hash = '';
+        window.location.hash = ''; // Clear the access token from the URL
     } else {
         accessToken = sessionStorage.getItem('spotifyAccessToken');
     }
@@ -110,9 +113,4 @@ document.addEventListener('DOMContentLoaded', function() {
         logoutText.classList.remove('hidden');
         fetchCurrentlyPlaying();
     }
-
-    window.addEventListener('beforeunload', () => {
-        sessionStorage.removeItem('spotifyAccessToken');
-        window.location.hash = '';
-    });
 });
