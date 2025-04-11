@@ -49,4 +49,4 @@ $top-bar_height: 40px;
 // General values
 $border-radius: 15px;
 $box-padding: 20px;
-$border-radius-items: $border-radius / 1.5;
+$border-radius-items: calc($border-radius / 1.5);
